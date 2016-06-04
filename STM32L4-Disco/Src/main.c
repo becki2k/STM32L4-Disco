@@ -37,7 +37,8 @@
 
 
 /* USER CODE BEGIN Includes */
-#include "stdio.h"
+//#include "stdio.h"
+
 #include "L3GD20.h"
 #define ITM_Port8(n)    (*((volatile unsigned char *)(0xE0000000+4*n)))
 #define ITM_Port16(n)   (*((volatile unsigned short*)(0xE0000000+4*n)))
@@ -98,6 +99,7 @@ int main(void)
   MX_SPI2_Init();
 
   /* USER CODE BEGIN 2 */
+	printf("Init ready\n");
 	
 	L3GD20_HandleTypeDef Gyro;
 		Gyro.hSPI = &hspi2;
@@ -114,6 +116,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		L3GD20_ReadRegister(&Gyro, L3GD20_REG_WHO_AM_I, pRxBuf, 1);
+		HAL_Delay(500);
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
