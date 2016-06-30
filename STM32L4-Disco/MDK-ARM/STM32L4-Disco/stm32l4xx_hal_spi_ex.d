@@ -28,5 +28,3 @@ stm32l4-disco\stm32l4xx_hal_spi_ex.o: ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l
 stm32l4-disco\stm32l4xx_hal_spi_ex.o: ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c_ex.h
 stm32l4-disco\stm32l4xx_hal_spi_ex.o: ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h
 stm32l4-disco\stm32l4xx_hal_spi_ex.o: ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h
-stm32l4-disco\stm32l4xx_hal_spi_ex.o: ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi.h
-stm32l4-disco\stm32l4xx_hal_spi_ex.o: ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi_ex.h

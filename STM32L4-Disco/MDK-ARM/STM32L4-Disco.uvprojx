@@ -351,7 +351,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -373,7 +373,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER,STM32L476xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc; ../Drivers/STM32L4xx_HAL_Driver/Inc; ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy; ../Drivers/CMSIS/Include; ../Drivers/CMSIS/Device/ST/STM32L4xx/Include; ..\MDK-ARM; ..\L3GD20</IncludePath>
+              <IncludePath>../Inc;    ../Drivers/STM32L4xx_HAL_Driver/Inc;    ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy;    ../Drivers/CMSIS/Include;    ../Drivers/CMSIS/Device/ST/STM32L4xx/Include;    ..\MDK-ARM;    ..\L3GD20</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -435,16 +435,6 @@
               <FileName>stm32l4xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/stm32l4xx_hal_msp.c</FilePath>
-            </File>
-            <File>
-              <FileName>L3GD20.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\L3GD20\L3GD20.c</FilePath>
-            </File>
-            <File>
-              <FileName>spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/spi.c</FilePath>
             </File>
           </Files>
         </Group>

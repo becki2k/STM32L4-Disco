@@ -1,0 +1,6 @@
+-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Include -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I..\MDK-ARM -I..\L3GD20 --C99
+-I "D:\Eigene Dateien\GitHub\STM32L4-Disco\STM32L4-Disco\MDK-ARM\RTE"
+-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+-I C:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\1.0.0\Device\Include
+-D__UVISION_VERSION="517" -D_RTE_ -DSTM32L476xx -DUSE_HAL_DRIVER -DSTM32L476xx
+-o stm32l4-disco\spi.o --omf_browse stm32l4-disco\spi.crf --depend stm32l4-disco\spi.d "../Src/spi.c"

@@ -32,14 +32,12 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l4xx_hal.h"
-#include "spi.h"
 #include "gpio.h"
-
 
 /* USER CODE BEGIN Includes */
 //#include "stdio.h"
 
-#include "L3GD20.h"
+//#include "L3GD20.h"
 #define ITM_Port8(n)    (*((volatile unsigned char *)(0xE0000000+4*n)))
 #define ITM_Port16(n)   (*((volatile unsigned short*)(0xE0000000+4*n)))
 #define ITM_Port32(n)   (*((volatile unsigned long *)(0xE0000000+4*n)))
@@ -58,6 +56,11 @@ int fputc(int ch, FILE *f) {
   }
   return(ch);
 }
+ 
+/*int fputc(int c, FILE *stream)
+{
+   return(ITM_SendChar(c));
+}*/
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -96,12 +99,11 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_SPI2_Init();
 
   /* USER CODE BEGIN 2 */
 	printf("Init ready\n");
 	
-	L3GD20_HandleTypeDef Gyro;
+	/*L3GD20_HandleTypeDef Gyro;
 		Gyro.hSPI = &hspi2;
 		Gyro.CS_Port = GPIOD;
 		Gyro.CS_Pin = GPIO_PIN_7;
@@ -109,15 +111,18 @@ int main(void)
 	uint8_t * pRxBuf = RxBuf;
 	
 	L3GD20_ReadRegister(&Gyro, L3GD20_REG_WHO_AM_I, pRxBuf, 1);
-	printf("Reg: %X, %X\n", RxBuf[0], RxBuf[1]);
+	printf("Reg: %X, %X\n", RxBuf[0], RxBuf[1]);*/
   /* USER CODE END 2 */
-	
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		L3GD20_ReadRegister(&Gyro, L3GD20_REG_WHO_AM_I, pRxBuf, 1);
+//		L3GD20_ReadRegister(&Gyro, L3GD20_REG_WHO_AM_I, pRxBuf, 1);
 		HAL_Delay(500);
+		printf("lala\n");
+		printf("lala2\n");
+		
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
@@ -139,16 +144,22 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
   RCC_OscInitStruct.MSICalibrationValue = 0;
   RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
+  RCC_OscInitStruct.PLL.PLLM = 1;
+  RCC_OscInitStruct.PLL.PLLN = 40;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
+  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
   HAL_RCC_OscConfig(&RCC_OscInitStruct);
 
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_MSI;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-  HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0);
+  HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4);
 
   __PWR_CLK_ENABLE();
 
